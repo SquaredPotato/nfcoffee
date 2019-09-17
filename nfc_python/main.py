@@ -13,7 +13,10 @@ util.debug = True
 run = True
 
 
+<<<<<<< HEAD
 def end_read(signal, frame):
+=======
+>>>>>>> 66adc4149b931c5681ff33bf57856496e378f553
     global run
     print("\nSIGINT captured, ending read.")
     run = False
