@@ -3,17 +3,18 @@
 import signal
 import sys
 import recipes
-import rfid
+import time
+from rfid import nfc
 
 run = True
-rfid_ = rfid.rfid
+reader = nfc()
 
 
 def end_read(signal, frame):
     global run
     print("\nSIGINT captured, ending read.")
     run = False
-    rfid_.rdr.cleanup()
+    reader.rdr.cleanup()
     sys.exit()
 
 
@@ -22,11 +23,21 @@ signal.signal(signal.SIGINT, end_read)
 
 
 def main():
-    
-    recipe = recipes.recipe(drink=3, strength=8, sugar=0, milk=0)
+    recipe_ = recipes.recipe(drink=2, strength=3, sugar=9, milk=3)
 
-    print(recipe)
+    while run:
+        reader.writerecipe(recipe_.finalize()[1])
+
+        card_data = reader.read_recipe()
+        print(card_data)
 
 
-if __name__ is "__main__":
+        time.sleep(1)
+
+    reader.rdr.cleanup()
+
+    print(recipe_)
+
+
+if __name__ == "__main__":
     main()
