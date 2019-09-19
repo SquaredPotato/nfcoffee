@@ -10,7 +10,7 @@ class part(Enum):
 
 class recipe:
 
-	drink = {'Hot water': 0, 'Coffee': 1, 'Espresso': 2, 'Hot Chocolate': 3, 'Latte macchiato': 4}
+	drink = {'Cappuccino': 0, 'Coffee': 1, 'Espresso': 2, 'Hot Chocolate': 3, 'Latte macchiato': 4}
 
 	maxStrength = 10
 	ticket = [0] * 4
@@ -22,10 +22,18 @@ class recipe:
 		self.ticket[part.milk.value] = milk
 
 	def __repr__(self):
-		return "recipe: [drink: " + self.drink.keys()[self.ticket[part.drink.value]] + ", strength: " \
+		return "recipe: [drink: " + self.getkeys(self.ticket[part.drink.value])[0] + ", strength: " \
 			   + str(self.ticket[part.strength.value]) + ", sugar: " \
 			   + str(self.ticket[part.sugar.value]) + ", milk: " \
 			   + str(self.ticket[part.milk.value]) + "]"
+
+	def getkeys(self, value):
+		keys = list()
+		items = self.drink.items()
+		for item in items:
+			if item[1] == value:
+				keys.append(item[0])
+		return keys
 
 	""" Makes sure all values are nominal, returns a tuple as {error, array} """
 	def finalize(self):
