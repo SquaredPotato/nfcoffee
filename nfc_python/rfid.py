@@ -1,7 +1,6 @@
 from pirc522 import RFID
 from recipes import recipe
 from recipes import part
-import sys
 
 
 # Only call this class from one thread at a time
@@ -15,7 +14,6 @@ class nfc:
 		self.recipeBlock = 4
 
 	""" Initializes rfid connection """
-
 	def start(self):
 		self.rdr.wait_for_tag()
 
@@ -37,7 +35,6 @@ class nfc:
 		return True
 
 	""" Writes recipe from "recipes" class to card """
-
 	def writerecipe(self, ticket):
 		try:
 			print("writing ticket to card")
@@ -54,7 +51,6 @@ class nfc:
 			exit()
 
 	""" Writes byte array with a maximum length of 16 to given block """
-
 	def write(self, block, data):
 		if not self.start():
 			er = self.util.rewrite(block, data)
@@ -69,8 +65,8 @@ class nfc:
 			return 2
 
 	""" Reads byte array with length of 16 from block """
-
 	def read(self, block):
+		print("waiting for nfc chip")
 		res = self.start()
 		if not res:
 			error = self.util.do_auth(block)
@@ -83,6 +79,7 @@ class nfc:
 
 		self.util.deauth()
 
+	""" Reads recipe into recipe instance """
 	def read_recipe(self):
 		data = self.read(self.recipeBlock)
 		return recipe(drink=data[part.drink.value], strength=data[part.strength.value],

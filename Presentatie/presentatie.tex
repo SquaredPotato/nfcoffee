@@ -1,0 +1,75 @@
+\documentclass{beamer}
+\usetheme{CambridgeUS}
+
+
+\usepackage{graphicx}
+\graphicspath{{./Images/}} 
+
+
+\usepackage{xcolor}
+\usepackage{multicol}
+
+\date{\today}
+
+%\usetheme{lucid}
+
+\begin{document}
+\usebackgroundtemplate{\includegraphics[width=\paperwidth]{achtergrond.png}}	
+	\frame {
+		\begin{flushright}
+   			Are you also sick of using the terribly\\ 
+   			slow coffeemachines the university of applied\\
+   			sciences has given us, well we know we are!\\ 
+   			
+   			{\LARGE Introducing NFCoffee !!\\}
+   			Giving you a personalized coffeecup which\\ 
+   			allows you to get your favorite coffee\\
+   			at the press of a button! 
+		 
+		\end{flushright}
+	
+	}
+	\frame {
+
+\begin{multicols}{2}
+	
+	\null \vfill
+
+	\vfill \null
+	
+	\columnbreak
+	
+	\null \vfill
+	\begin{itemize}
+		\item What did we use
+		\begin{itemize}
+			\item Raspberry pi
+			\item Python
+			\item Self designed hardware
+			\item \LaTeX
+			\item NFC module
+		\end{itemize}
+		
+	\end{itemize}
+	\vfill \null
+\end{multicols}
+
+	}
+	\frame{
+		\centering
+		\includegraphics[width=8cm ]{NFCoffee_schema}
+
+	}
+	\frame{
+				\centering
+		\includegraphics[width=10cm ]{pi_nfc_pcb}
+
+	}
+	\frame{
+ 				\centering
+		 \includegraphics[width=10cm ]{KoffiezetSimulator}
+		  
+	}
+
+
+\end{document}
