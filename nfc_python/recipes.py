@@ -12,7 +12,7 @@ class recipe:
 
 	drink = {'Hot water': 0, 'Coffee': 1, 'Espresso': 2, 'Hot Chocolate': 3, 'Latte macchiato': 4}
 
-	maxStrength = 10
+	maxStrength = 4
 	ticket = [0] * 4
 
 	def __init__(self, drink=0, strength=0, sugar=0, milk=0):
@@ -38,5 +38,8 @@ class recipe:
 				return i, None
 
 		return None, self.ticket
+
+	def order(self):
+		print "Drink:", self.ticket[0], "Strength:", self.ticket[1], " Sugar:", self.ticket[2], "Milk:", self.ticket[3]
 
 
