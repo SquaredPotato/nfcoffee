@@ -49,4 +49,7 @@ class recipe:
 
 		return None, self.ticket
 
+	def order(self):
+		print "Drink:", self.ticket[0], "Strength:", self.ticket[1], " Sugar:", self.ticket[2], "Milk:", self.ticket[3]
+
 
