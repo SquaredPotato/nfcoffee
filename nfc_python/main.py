@@ -23,7 +23,7 @@ signal.signal(signal.SIGINT, end_read)
 
 
 def main():
-    recipe_ = recipes.recipe(drink=2, strength=3, sugar=9, milk=3)
+    recipe_ = recipes.recipe(drink=4, strength=3, sugar=0, milk=3)
 
     while run:
         reader.writerecipe(recipe_.finalize()[1])

@@ -10,9 +10,11 @@ class part(Enum):
 
 class recipe:
 
-	drink = {'Cappuccino': 0, 'Coffee': 1, 'Espresso': 2, 'Hot Chocolate': 3, 'Latte macchiato': 4}
+	# drink = {'Cappuccino': 0, 'Coffee': 1, 'Espresso': 2, 'Hot Chocolate': 3, 'Latte macchiato': 4}
+	drink = ('Cappuccino', 'Coffee', 'Espresso', 'Hot Chocolate', 'Latte macchiato')
+	# items = drink.items()
 
-	maxStrength = 10
+	maxStrength = 4
 	ticket = [0] * 4
 
 	def __init__(self, drink=0, strength=0, sugar=0, milk=0):
@@ -22,18 +24,18 @@ class recipe:
 		self.ticket[part.milk.value] = milk
 
 	def __repr__(self):
-		return "recipe: [drink: " + self.getkeys(self.ticket[part.drink.value])[0] + ", strength: " \
+		return "recipe: [drink: " + self.drink[self.ticket[part.drink.value]] + ", strength: " \
 			   + str(self.ticket[part.strength.value]) + ", sugar: " \
 			   + str(self.ticket[part.sugar.value]) + ", milk: " \
 			   + str(self.ticket[part.milk.value]) + "]"
 
-	def getkeys(self, value):
-		keys = list()
-		items = self.drink.items()
-		for item in items:
-			if item[1] == value:
-				keys.append(item[0])
-		return keys
+	# def getkeys(self, value):
+	# 	keys = list()
+	# 	print(self.items)
+	# 	for item in recipe.items:
+	# 		if item[1] == value:
+	# 			keys.append(item[0])
+	# 	return keys
 
 	""" Makes sure all values are nominal, returns a tuple as {error, array} """
 	def finalize(self):
